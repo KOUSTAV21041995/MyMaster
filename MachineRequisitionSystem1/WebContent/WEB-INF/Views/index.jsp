@@ -43,7 +43,7 @@
 										<select class="form-control" id="option" required>
 											<option value="" selected disabled>Select Option</option>
         									<option value="ip">IP address</option>
-        									<option value="server">Server name</option>
+        									<option value="server">Server Name</option>
       									</select>
 	  								</div>
 							</div>
