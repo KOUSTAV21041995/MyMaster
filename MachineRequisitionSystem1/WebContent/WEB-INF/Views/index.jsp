@@ -123,8 +123,7 @@
 							<Label class="notes" >Note</Label>
 							<ul class="notepoints">
 								<li >You can request only one machine at a time</li>
-								<li >Please provide correct Manager ID</li>
-								<li >Your request can be accepted or rejected based on the division and the tenure of machine requisition request</li>
+								<li >Your request can be accepted or rejected based on the tenure of machine requisition request</li>
 							</ul>
   						</td>
   					</tr>
