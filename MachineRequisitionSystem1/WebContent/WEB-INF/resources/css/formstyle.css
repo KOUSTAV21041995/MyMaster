@@ -1,0 +1,62 @@
+#title{
+	color:#e8ede6;
+}
+
+body{
+	margin-top:20px;
+}
+
+
+.form-style{
+	margin-left:150px;
+	margin-right:150px;
+	padding-top:40px;
+	padding-bottom:10px;
+	border-radius:10px; 
+	margin-bottom:10px;
+}
+
+.background-format{
+	background: linear-gradient(to top right, #78ff8a, #40bdd6); 
+}
+
+
+
+.img-responsive{
+	width:160px;
+	height:40px;
+	padding-top:-6px;
+	margin-left:635px;
+	margin-top:-30px;
+	margin-bottom:8px;
+}
+td{
+	width:70%;
+}
+
+#form-table{
+	margin-right:-50px;
+}
+
+#detail{
+	padding-left:10px;
+	color:#17827d;
+}
+
+.notes{
+	text-align:center-left;
+	width:100%;
+	padding-right:10px;
+	padding-top:20px;
+	color:#cc0000;
+	font-size:125%;
+}
+
+.notepoints{
+	text-align:center-left;
+	width:100%;
+	padding-right:10px;
+	padding-top:20px;
+	color:#cc0000;
+	
+}
