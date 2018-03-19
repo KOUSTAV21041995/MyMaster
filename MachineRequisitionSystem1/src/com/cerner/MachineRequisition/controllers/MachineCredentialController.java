@@ -23,7 +23,7 @@ public class MachineCredentialController {
 	public  @ResponseBody void DivNamebyIP(HttpServletRequest req,HttpServletResponse resp) throws IOException,NullPointerException {
 		PrintWriter out = resp.getWriter();
 	    String credential=req.getParameter("credentialvalue");
-	    System.out.println(credential);
+
 	    	out.println(machinecredservice.getDivNamebyIP(credential));
 	    
 	  		
@@ -33,7 +33,7 @@ public class MachineCredentialController {
 	public  @ResponseBody void DivNamebyServer(HttpServletRequest req,HttpServletResponse resp) throws IOException,NullPointerException {
 		PrintWriter out = resp.getWriter();
 	    String credential=req.getParameter("credentialvalue");
-	    System.out.println(credential);
+	    
 	    	out.println(machinecredservice.getDivNamebyServer(credential));
 	  
 	   
