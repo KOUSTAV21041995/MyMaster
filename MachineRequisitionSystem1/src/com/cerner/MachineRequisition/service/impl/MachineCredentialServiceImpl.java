@@ -26,8 +26,5 @@ public class MachineCredentialServiceImpl implements MachineCredentialService {
 	public void setMachinecreddao(MachineCredentialsDao machinecreddao) {
 		this.machinecreddao = machinecreddao;
 	}
-	public boolean isIp() {
-		return true;
-		
-	}
+	
 }
