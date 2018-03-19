@@ -29,6 +29,7 @@
 	<body background='<spring:url value="/resources/images/bgimage.jpg"></spring:url>'>
 		<div class="container" >
 			<legend id="title"> Machine Requisition Request</legend>
+			 
   
 			<form class="form-horizontal form-style background-format" method="post" name="form1">
 				<img src="${logo}" class="img-responsive " >     
@@ -40,7 +41,7 @@
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="option">Select input type</label>
 									<div class="col-sm-6">
-										<select class="form-control" id="option" required>
+										<select class="form-control" id="option1" required>
 											<option value="" selected disabled>Select Option</option>
         									<option value="ip">IP address</option>
         									<option value="server">Server Name</option>
@@ -55,7 +56,9 @@
       									<span class="input-group-addon">
      		 								<i class="glyphicon glyphicon-modal-window"></i>
       									</span>
-        								<input disabled type="text" class="form-control"  onkeypress="return isIp(event)" required name="ip" id="ip">
+        								<input disabled type="text" onkeypress="return isIp(event)" class="form-control"  required name="ip" id="ip">										
+        								<input disabled type="text" class="form-control"  required name="server" id="server">
+										
 										<span class="input-group-addon "  id="wrong1" style="background-color:white;">
 											<i class="glyphicon glyphicon-remove-circle" ></i>
 										</span>
@@ -111,13 +114,25 @@
       								</div>
       							</div>
     						</div>
-	
+	                      <div class="form-group">
+                              <label class="control-label col-sm-3" for="did">Division Name:</label>
+                              <div class="col-sm-6">
+                              <div class="input-group">
+                              <span class="input-group-addon">
+                              <i class="glyphicon glyphicon-user"></i>
+                              </span>
+                          <input type="text" class="form-control" id="did"  required name="did" disabled>
+                          </div>
+                      </div>
+                    </div>
+    
     						<div class="form-group">        
       							<div class="col-sm-offset-4 col-sm-12">
         							<input type="reset" class="btn btn-primary" value="Reset" onclick="reset_all()" >&nbsp;&nbsp;&nbsp;
 									<input type="submit" class="btn btn-success" value="Request" >
-      							</div>
+								</div>
     						</div>
+    						
   						</td>
   						<td>
 							<Label class="notes" >Note</Label>

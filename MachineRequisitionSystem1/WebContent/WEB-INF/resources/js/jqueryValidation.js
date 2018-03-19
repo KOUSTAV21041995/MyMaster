@@ -7,10 +7,11 @@ $( document ).ready(function() {
 	$("#right1").hide();
 	$("#wrong2").hide();
 	$("#right2").hide();
-	
+	$("#server").hide();
+	$("#ip").css("border","1px solid #ddd");
 	var error_ip = false;
 	var error_user = false;
-	
+
 	//date validation
 	var from = $( "#fromDate" )
 	.datepicker({
@@ -42,29 +43,71 @@ $( document ).ready(function() {
 	}
 	
 	//Selecting IP or Server
-	$("#option").change(function(){
-        var selectedOption = $("#option option:selected").val();
+	$("#option1").change(function(){
+		
+        var selectedOption = $("#option1 option:selected").val();  
         $('#ip').val('');
-        if(selectedOption == "ip"){
+        $('#server').val('');
+        if(selectedOption  == "ip"){
         	check=0;
-        	$("#ipLabel").text("IP address: ");
+        	$("#server").hide();
+        	$("#ip").show();
+        	$("#ip_error").hide();
+        	$("#user_error").hide();
+        	$("#wrong1").hide();
+        	$("#right1").hide();
+        	$("#wrong2").hide();
+        	$("#right2").hide();
+        	$('#did').val("");
+        	$("#ip").css("border","1px solid #ddd");
         	$("#ip").prop('disabled', false);
         	$("#ip").attr("placeholder", "000.000.000.000");
+        	$("#ipLabel").text("IP address: ");
         	$("#ip").focusout(function(){
+        		
+            	$("#did").val("");
+        		/*$("#ip_error").hide();
+        		$("#user_error").hide();
+        		$("#wrong1").hide();
+        		$("#right1").hide();
+        		$("#wrong2").hide();
+        		$("#right2").hide();*/
+            	
         		check_ip();
+        		
         	});
     	} 
         else if(selectedOption == "server"){
         	check=1;
+        	$("#ip").hide();
+        	$("#server").show();
         	$("#ip_error").hide();
 			$("#wrong1").hide();
+			$("#user_error").hide();
 			$("#right1").hide();
-			$("#ip").css("border","1px solid #ddd");
-        	$("#ip").prop('disabled', false);
-        	$("#ip").attr("placeholder", "Server name");
+			$('#did').val("");
+			$("#wrong2").hide();
+        	$("#right2").hide();
+			$("#server").css("border","1px solid #ddd");
+        	$("#server").prop('disabled', false);
+        	$("#server").attr("placeholder", "Server name");
         	$("#ipLabel").text("Server name: "); 
+        	$("#server").focusout(function(){
+        		$("#did").val("");
+        		$("#ip_error").hide();
+        		$("#user_error").hide();
+        		$("#wrong1").hide();
+        		$("#right1").hide();
+        		$("#wrong2").hide();
+        		$("#right2").hide();
+        		
+        		populatebyServer();
+        		
+        		//alert("pqr");
+        	});
         }
-        else{
+        else
+        {
         	$("#ip").prop('disabled', true);
         	
         }
@@ -121,12 +164,14 @@ $( document ).ready(function() {
 				if (pattern.test(cip)) {
 					$("#ip_error").hide();
 					$("#wrong1").hide();
-					$("#right1").show();
+					populatebyIP();
+					/*$("#right1").show();
 					$("#right1").css("color","#1aa34a");
-					$("#ip").css("border","1px solid #1aa34a");
+					$("#ip").css("border","1px solid #1aa34a");*/
 				} 
 				else {
 					$("#right1").hide();
+					
 					$("#ip_error").html("Please enter valid IP");
 					$("#ip_error").css("color","#F90A0A");
 					$("#ip_error").show();
@@ -136,6 +181,70 @@ $( document ).ready(function() {
 					error_ip = true;
 				}
 			}
+		}
+	}
+	function populatebyIP(){
+		var credentialvalue= $("#ip").val();
+		if(credentialvalue!=''){
+		$.ajax({
+			type:'POST',
+			url:'credentialbyIP',
+			data: {credentialvalue:credentialvalue},
+			success:function(response){
+				$('#did').val(response);
+				if($('#did').val()!="Invalid IP Address"){
+					$("#right1").css("color","#1aa34a");
+					$("#ip").css("border","1px solid #1aa34a");
+					$("#right1").show();
+				}
+				else
+					{
+					$('#did').val("");
+					$("#ip_error").html("Please type correct IP address");
+					$("#ip_error").css("color","#F90A0A");
+					$("#ip_error").show();
+					$("#wrong1").css("color","#F90A0A");
+					$("#wrong1").show();
+					$("#ip").css("border","1px solid #F90A0A");
+					}
+			
+			},
+		error:function(response){
+			alert("Cannot autopopulate Division Name");
+		}
+		});
+		}
+	}
+	function populatebyServer(){
+		var credentialvalue= $("#server").val();
+		if(credentialvalue!=''){
+		$.ajax({
+			type:'POST',
+			url:'credentialbyServer',
+			data: {credentialvalue:credentialvalue},
+			success:function(response){
+				$('#did').val(response);
+				if($('#did').val()!="Invalid Server Name"){
+				$("#right1").show();
+				$("#right1").css("color","#1aa34a");
+				$("#server").css("border","1px solid #1aa34a");
+				}
+				else
+					{
+					$('#did').val("");
+					$("#ip_error").html("Invalid server name ");
+					$("#ip_error").css("color","#F90A0A");
+					$("#ip_error").show();
+					$("#wrong1").show();
+					$("#server").css("border","1px solid #F90A0A");
+					$("#wrong1").css("color","#F90A0A");
+					}
+			
+			},
+		error:function(response){
+			alert("Cannot autopopulate Division Name");
+		}
+		});
 		}
 	}
 });
