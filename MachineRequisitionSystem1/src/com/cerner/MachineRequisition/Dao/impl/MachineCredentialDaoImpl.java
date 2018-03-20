@@ -1,54 +1,49 @@
 package com.cerner.MachineRequisition.Dao.impl;
 
-import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.cerner.MachineRequisition.Dao.MachineCredentialsDao;
 import com.cerner.MachineRequisition.Model.MachineCredentials;
+
 @Repository
 public class MachineCredentialDaoImpl implements MachineCredentialsDao {
 	@Autowired
-	private SessionFactory session;
-	
+	private SessionFactory sessionfactory;
 	@Override
 	public String getDivisionNamebyIP(String credential) {
-		String mid="";
+		String DivisionName="";
 		try {
-			Session currentsession=session.getCurrentSession();
-			String hql = "From MachineCredentials where ipAddress="+"'"+credential+"'";
-			Query query = currentsession.createQuery(hql);
-			MachineCredentials cred=(MachineCredentials) query.getSingleResult();
-			 mid=cred.getDivname();
-				
-		}
+			Session currentsession=sessionfactory.getCurrentSession(); 
+			String ipdetails = "From MachineCredentials where ipAddress="+"'"+credential+"'";
+			Query query = currentsession.createQuery(ipdetails);
+			MachineCredentials machinecredentials=(MachineCredentials) query.getSingleResult();
+			//fetch the corresponding division name from database
+			DivisionName=machinecredentials.getDivisionName(); 				
+		} 
 		catch(Exception e) {
-			return "Invalid IP Address";
+			//if no division name exists in database for that IP address
+			return "Invalid IP Address";  	
 		}
-		return mid;
-		
+		return DivisionName;		 
 	}
 	@Override
 	public String getDivisionNamebyServer(String credential) {
-		String mid="";
+		String DivisionName="";
 		try {
-			Session currentsession=session.getCurrentSession();
-			String hql = "From MachineCredentials where servername="+"'"+credential+"'";
-			
-			Query query = currentsession.createQuery(hql);
-			
-			MachineCredentials cred=(MachineCredentials) query.getSingleResult();
-			mid=cred.getDivname();
-			
+			Session currentsession=sessionfactory.getCurrentSession();
+			String serverdetails = "From MachineCredentials where servername="+"'"+credential+"'";
+			Query query = currentsession.createQuery(serverdetails);
+			MachineCredentials machinecredentials=(MachineCredentials) query.getSingleResult();
+			//fetch the corresponding division name from database
+			DivisionName=machinecredentials.getDivisionName();			
 		}
 		catch(Exception e) {
+			//if no division name exists in database for that server name
 			return "Invalid Server Name";
 		}
-		return mid;
+		return DivisionName;
 	}
-
 }

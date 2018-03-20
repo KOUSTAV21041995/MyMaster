@@ -10,7 +10,7 @@ public class RequestPagecontroller {
 	
 	@RequestMapping(value="/",method = RequestMethod.GET)
 	public String displayHome() {
-		return "index";//redirect to index file
+		return "index";   //redirects to the home page
 	}
 
 }

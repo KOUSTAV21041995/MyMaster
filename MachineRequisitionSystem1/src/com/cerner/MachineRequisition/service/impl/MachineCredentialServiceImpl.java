@@ -5,26 +5,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.cerner.MachineRequisition.Dao.MachineCredentialsDao;
 import com.cerner.MachineRequisition.service.MachineCredentialService;
-@Service("machinecredservice")
+
+@Service("machinecredentialservice")
 public class MachineCredentialServiceImpl implements MachineCredentialService {
 	@Autowired
-	private MachineCredentialsDao machinecreddao;
+	private MachineCredentialsDao machinecredentialdao;
+	@Override
+	@Transactional
+	public String getDivisionNamebyIP(String credential) {
+		return machinecredentialdao.getDivisionNamebyIP(credential);
+	}
+	@Override
+	@Transactional
+	public String getDivisionNamebyServer(String credential) {
+		return machinecredentialdao.getDivisionNamebyServer(credential);
+	}
 	
-	@Override
-	@Transactional
-	public String getDivNamebyIP(String credential) {
-		return machinecreddao.getDivisionNamebyIP(credential);
-	}
-	@Override
-	@Transactional
-	public String getDivNamebyServer(String credential) {
-		return machinecreddao.getDivisionNamebyServer(credential);
-	}
-	public MachineCredentialsDao getdao() {
-		return machinecreddao;
-	}
-	public void setMachinecreddao(MachineCredentialsDao machinecreddao) {
-		this.machinecreddao = machinecreddao;
-	}
 	
 }

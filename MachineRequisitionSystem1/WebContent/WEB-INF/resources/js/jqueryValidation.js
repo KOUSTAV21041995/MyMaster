@@ -1,6 +1,5 @@
 var check=0;
-$( document ).ready(function() {
-	
+$( document ).ready(function() {	
 	$("#ip_error").hide();
 	$("#user_error").hide();
 	$("#wrong1").hide();
@@ -65,14 +64,7 @@ $( document ).ready(function() {
         	$("#ipLabel").text("IP address: ");
         	$("#ip").focusout(function(){
         		
-            	$("#did").val("");
-        		/*$("#ip_error").hide();
-        		$("#user_error").hide();
-        		$("#wrong1").hide();
-        		$("#right1").hide();
-        		$("#wrong2").hide();
-        		$("#right2").hide();*/
-            	
+            	$("#did").val("");        	          	
         		check_ip();
         		
         	});
@@ -101,9 +93,8 @@ $( document ).ready(function() {
         		$("#wrong2").hide();
         		$("#right2").hide();
         		
-        		populatebyServer();
+        		populatebyServer(); 
         		
-        		//alert("pqr");
         	});
         }
         else
@@ -164,10 +155,7 @@ $( document ).ready(function() {
 				if (pattern.test(cip)) {
 					$("#ip_error").hide();
 					$("#wrong1").hide();
-					populatebyIP();
-					/*$("#right1").show();
-					$("#right1").css("color","#1aa34a");
-					$("#ip").css("border","1px solid #1aa34a");*/
+					populatebyIP();					
 				} 
 				else {
 					$("#right1").hide();
@@ -268,8 +256,10 @@ function isIp(evt){
 
 //reset all
 function reset_all(){
+	
 	$("#ip_error").hide();
 	$("#ip").css("border","1px solid #ddd");
+	$("#server").css("border","1px solid #ddd");
 	$("#userid").css("border","1px solid #ddd");
 	$("#user_error").hide();
 	$("#wrong1").hide();
