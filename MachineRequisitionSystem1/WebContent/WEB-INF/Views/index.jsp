@@ -31,7 +31,7 @@
 			<legend id="title"> Machine Requisition Request</legend>
 			 
   
-			<form class="form-horizontal form-style background-format" method="post" name="form1">
+			<form class="form-horizontal form-style background-format" method="post" name="form1" action="mail">
 				<img src="${logo}" class="img-responsive " >     
 				<table class="table" >
 					<tr>
@@ -129,7 +129,7 @@
     						<div class="form-group">        
       							<div class="col-sm-offset-4 col-sm-12">
         							<input type="reset" class="btn btn-primary" value="Reset" onclick="reset_all()" >&nbsp;&nbsp;&nbsp;
-									<input type="submit" class="btn btn-success" value="Request" >
+									<input type="submit" class="btn btn-success" data-toggle="modal" data-target="#myModal" value="Request" >
 								</div>
     						</div>
     						
@@ -144,6 +144,27 @@
   					</tr>
   				</table>
   			</form>
+  			
+  			<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Machine Request Id: MR001</h4>
+        </div>
+        <div class="modal-body">
+          <p>Thank You</p>
+          <p>Your request is under process...</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  			
 		</div>
 	</body>
 </html>
