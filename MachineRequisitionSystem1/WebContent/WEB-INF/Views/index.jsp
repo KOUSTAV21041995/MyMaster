@@ -138,7 +138,11 @@
 							<Label class="notes" >Note</Label>
 							<ul class="notepoints">
 								<li >You can request only one machine at a time</li>
+<<<<<<< HEAD
 								<li >Your request can be accepted or rejected based on the division and the tenure of machine requisition request</li>
+=======
+								<li >Your request can be accepted or rejected based on the tenure of machine requisition request</li>
+>>>>>>> 9179988af344c491241fb4932a5b4552f1bab01f
 							</ul>
   						</td>
   					</tr>
