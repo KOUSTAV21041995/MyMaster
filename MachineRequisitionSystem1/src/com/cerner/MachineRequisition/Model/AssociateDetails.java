@@ -1,3 +1,9 @@
+/**
+* This is the Model class for Associate Details with the getters and setters for associateId
+*  
+* @author Rahul Ghata
+*/
+
 package com.cerner.MachineRequisition.Model;
 
 import javax.persistence.Column;
@@ -6,21 +12,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="associate")
+@Table(name = "associate")
 public class AssociateDetails {
-    @Id
-    @Column(name="AssociateId")
-    private String  associateId;
-    
-    public AssociateDetails() {
-        super();
-    }
+	@Id
+	@Column(name = "AssociateId")
+	private String associateId;
 
-    public String getAssociateId() {
-        return associateId;
-    }
+	public AssociateDetails() {
+		super();
+	}
 
-    public void setAssociateId(String associateId) {
-        this.associateId = associateId;
-    }
+	public String getAssociateId() {
+		return associateId;
+	}
+
+	public void setAssociateId(String associateId) {
+		this.associateId = associateId;
+	}
 }
