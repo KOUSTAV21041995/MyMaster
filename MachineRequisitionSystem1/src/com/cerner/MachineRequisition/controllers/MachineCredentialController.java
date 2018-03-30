@@ -20,28 +20,28 @@ import com.cerner.MachineRequisition.service.MachineCredentialService;
 
 @Controller
 public class MachineCredentialController {
-	@Autowired(required = true)
-	MachineCredentialService machinecredentialservice;
+    @Autowired(required = true)
+    MachineCredentialService machinecredentialservice;
 
-	public MachineCredentialController() {
-		super();
-	}
+    public MachineCredentialController() {
+        super();
+    }
 
-	// maps to the AJAX url
-	@RequestMapping(value = "/credentialbyIP", method = RequestMethod.POST)
-	public @ResponseBody void DivisionNamebyIP(HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
-		PrintWriter out = response.getWriter();
-		String credential = request.getParameter("credentialvalue");
-		out.println(machinecredentialservice.getDivisionNamebyIP(credential));
-	}
+    // maps to the AJAX url
+    @RequestMapping(value = "/credentialbyIP", method = RequestMethod.POST)
+    public @ResponseBody void DivisionNamebyIP(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+        PrintWriter out = response.getWriter();
+        String credential = request.getParameter("credentialvalue");
+        out.println(machinecredentialservice.getDivisionNamebyIP(credential));
+    }
 
-	// maps to the AJAX url
-	@RequestMapping(value = "/credentialbyServer", method = RequestMethod.POST)
-	public @ResponseBody void DivisionNamebyServer(HttpServletRequest req, HttpServletResponse resp)
-			throws IOException {
-		PrintWriter out = resp.getWriter();
-		String credential = req.getParameter("credentialvalue");
-		out.println(machinecredentialservice.getDivisionNamebyServer(credential));
-	}
+    // maps to the AJAX url
+    @RequestMapping(value = "/credentialbyServer", method = RequestMethod.POST)
+    public @ResponseBody void DivisionNamebyServer(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException {
+        PrintWriter out = resp.getWriter();
+        String credential = req.getParameter("credentialvalue");
+        out.println(machinecredentialservice.getDivisionNamebyServer(credential));
+    }
 }

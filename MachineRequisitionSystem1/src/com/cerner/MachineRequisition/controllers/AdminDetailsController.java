@@ -8,14 +8,16 @@ package com.cerner.MachineRequisition.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.cerner.MachineRequisition.Email.EmailCredential;
+
 import com.cerner.MachineRequisition.service.AdminDetailsService;
 import com.cerner.MachineRequisition.service.impl.EmailServiceImpl;
 
@@ -25,8 +27,7 @@ public class AdminDetailsController {
     AdminDetailsService admindetailservice;
     @Autowired(required = true)
     EmailServiceImpl emailservice;
-    
-    
+
     public AdminDetailsController() {
         super();
     }
@@ -37,8 +38,10 @@ public class AdminDetailsController {
         PrintWriter out = response.getWriter();
         String credential = request.getParameter("divName");
         String adminemail = admindetailservice.getAdminEmailByDiv(credential);
-        System.out.println(adminemail);
-        emailservice.setAdminemail(adminemail); 
-        out.println(adminemail); 
-    } 
+        emailservice.setAdminemail(adminemail);
+        // emailservice.adminemail(adminemail);
+        /*
+         * System.out.println(adminemail); emailservice.setAdminemail(adminemail);
+         */ out.println(adminemail);
+    }
 }

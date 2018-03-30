@@ -14,19 +14,19 @@ import com.cerner.MachineRequisition.service.MachineCredentialService;
 
 @Service("machinecredentialservice")
 public class MachineCredentialServiceImpl implements MachineCredentialService {
-	@Autowired
-	private MachineCredentialsDao machinecredentialdao;
+    @Autowired
+    private MachineCredentialsDao machinecredentialdao;
 
-	@Override
-	@Transactional
-	public String getDivisionNamebyIP(String credential) {
-		return machinecredentialdao.getDivisionNamebyIP(credential);
-	}
+    @Override
+    @Transactional
+    public String getDivisionNamebyIP(String credential) {
+        return machinecredentialdao.getDivisionNamebyIP(credential);
+    }
 
-	@Override
-	@Transactional
-	public String getDivisionNamebyServer(String credential) {
-		return machinecredentialdao.getDivisionNamebyServer(credential);
-	}
+    @Override
+    @Transactional
+    public String getDivisionNamebyServer(String credential) {
+        return machinecredentialdao.getDivisionNamebyServer(credential);
+    }
 
 }

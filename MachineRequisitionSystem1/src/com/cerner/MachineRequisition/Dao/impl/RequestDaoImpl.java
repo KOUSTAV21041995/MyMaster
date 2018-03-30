@@ -21,29 +21,29 @@ import com.cerner.MachineRequisition.Model.RequestDetails;
 
 @Repository
 public class RequestDaoImpl implements RequestDao {
-	@Autowired
-	private SessionFactory sessionFactory;
-	int RequestId = 0;
+    @Autowired
+    private SessionFactory sessionFactory;
+    int RequestId = 0;
 
-	@Override
-	public boolean addRequestDetails(RequestDetails requestdetails) {
-		boolean saveFlag = false;
-		try {
-			Session currentSession = sessionFactory.getCurrentSession();
-			// setting the request ID with an unique random number
-			requestdetails.setRequestid(randomIdGenerator());
-			currentSession.save(requestdetails);
-			saveFlag = true;
-		} catch (Exception e) {
-			saveFlag = false;
-		}
-		return saveFlag;
-	}
+    @Override
+    public boolean addRequestDetails(RequestDetails requestdetails) {
+        boolean saveFlag = false;
+        try {
+            Session currentSession = sessionFactory.getCurrentSession();
+            // setting the request ID with an unique random number
+            requestdetails.setRequestid(randomIdGenerator());
+            currentSession.save(requestdetails);
+            saveFlag = true;
+        } catch (Exception e) {
+            saveFlag = false;
+        }
+        return saveFlag;
+    }
 
-	public int randomIdGenerator() {
-		Random random = new Random();
-		int randomInteger = Math.abs(random.nextInt());
-		RequestId = randomInteger;
-		return RequestId;
-	}
+    public int randomIdGenerator() {
+        Random random = new Random();
+        int randomInteger = Math.abs(random.nextInt());
+        RequestId = randomInteger;
+        return RequestId;
+    }
 }

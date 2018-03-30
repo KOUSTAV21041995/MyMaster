@@ -14,19 +14,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "associate")
 public class AssociateDetails {
-	@Id
-	@Column(name = "AssociateId")
-	private String associateId;
+    @Id
+    @Column(name = "AssociateId")
+    private String associateId;
 
-	public AssociateDetails() {
-		super();
-	}
+    public AssociateDetails() {
+        super();
+    }
 
-	public String getAssociateId() {
-		return associateId;
-	}
+    public String getAssociateId() {
+        return associateId;
+    }
 
-	public void setAssociateId(String associateId) {
-		this.associateId = associateId;
-	}
+    public void setAssociateId(String associateId) {
+        this.associateId = associateId;
+    }
 }

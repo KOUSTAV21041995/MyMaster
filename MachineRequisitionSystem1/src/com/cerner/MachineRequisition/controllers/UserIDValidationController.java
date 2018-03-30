@@ -23,15 +23,15 @@ import com.cerner.MachineRequisition.service.AssociateDetailsService;
 
 @Controller
 public class UserIDValidationController {
-	@Autowired(required = true)
-	AssociateDetailsService assodetailservice;
+    @Autowired(required = true)
+    AssociateDetailsService assodetailservice;
 
-	// maps to the AJAX url
-	@RequestMapping(value = "/RequestorIDValidation", method = RequestMethod.POST)
-	public @ResponseBody void validateUserId(HttpServletRequest req, HttpServletResponse resp)
-			throws IOException, NullPointerException {
-		PrintWriter out = resp.getWriter();
-		String credential = req.getParameter("associateId");
-		out.println(assodetailservice.isValidUserID(credential));
-	}
+    // maps to the AJAX url
+    @RequestMapping(value = "/RequestorIDValidation", method = RequestMethod.POST)
+    public @ResponseBody void validateUserId(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException, NullPointerException {
+        PrintWriter out = resp.getWriter();
+        String credential = req.getParameter("associateId");
+        out.println(assodetailservice.isValidUserID(credential));
+    }
 }

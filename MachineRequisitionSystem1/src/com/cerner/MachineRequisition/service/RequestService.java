@@ -9,5 +9,5 @@ package com.cerner.MachineRequisition.service;
 import com.cerner.MachineRequisition.Model.RequestDetails;
 
 public interface RequestService {
-	public boolean addRequestDetails(RequestDetails requestdetails);
+    public boolean addRequestDetails(RequestDetails requestdetails);
 }

@@ -15,69 +15,69 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "request")
 public class RequestDetails {
-	@Id
-	@Column(name = "RequestId")
-	private int requestid;
-	@Column(name = "Credential")
-	private String credential;
-	@Column(name = "AssociateId")
-	private String associd;
-	@Column(name = "StartDate")
-	private String startdate;
-	@Column(name = "EndDate")
-	private String enddate;
-	@Column(name = "DivisionName")
-	private String divname;
+    @Id
+    @Column(name = "RequestId")
+    private int requestid;
+    @Column(name = "Credential")
+    private String credential;
+    @Column(name = "AssociateId")
+    private String associd;
+    @Column(name = "StartDate")
+    private String startdate;
+    @Column(name = "EndDate")
+    private String enddate;
+    @Column(name = "DivisionName")
+    private String divname;
 
-	public RequestDetails() {
-		super();
-	}
+    public RequestDetails() {
+        super();
+    }
 
-	public int getRequestid() {
-		return requestid;
-	}
+    public int getRequestid() {
+        return requestid;
+    }
 
-	public void setRequestid(int requestid) {
-		this.requestid = requestid;
-	}
+    public void setRequestid(int requestid) {
+        this.requestid = requestid;
+    }
 
-	public String getDivname() {
-		return divname;
-	}
+    public String getDivname() {
+        return divname;
+    }
 
-	public void setDivname(String divname) {
-		this.divname = divname;
-	}
+    public void setDivname(String divname) {
+        this.divname = divname;
+    }
 
-	public String getCredential() {
-		return credential;
-	}
-     
-	public void setCredential(String credential) {
-		this.credential = credential;
-	}
+    public String getCredential() {
+        return credential;
+    }
 
-	public String getAssocid() {
-		return associd;
-	}
+    public void setCredential(String credential) {
+        this.credential = credential;
+    }
 
-	public void setAssocid(String associd) {
-		this.associd = associd;
-	}
+    public String getAssocid() {
+        return associd;
+    }
 
-	public String getStartdate() {
-		return startdate;
-	}
+    public void setAssocid(String associd) {
+        this.associd = associd;
+    }
 
-	public void setStartdate(String startdate) {
-		this.startdate = startdate;
-	}
+    public String getStartdate() {
+        return startdate;
+    }
 
-	public String getEnddate() {
-		return enddate;
-	}
+    public void setStartdate(String startdate) {
+        this.startdate = startdate;
+    }
 
-	public void setEnddate(String enddate) {
-		this.enddate = enddate;
-	}
+    public String getEnddate() {
+        return enddate;
+    }
+
+    public void setEnddate(String enddate) {
+        this.enddate = enddate;
+    }
 }

@@ -16,13 +16,13 @@ import com.cerner.MachineRequisition.service.AssociateDetailsService;
 
 @Service("assodetailservice")
 public class AssociateDetailsServiceImpl implements AssociateDetailsService {
-	@Autowired
-	private UserIDValidationDao useridvaldao;
+    @Autowired
+    private UserIDValidationDao useridvaldao;
 
-	@Override
-	@Transactional
-	public boolean isValidUserID(String associateId) {
-		return useridvaldao.isValidUserID(associateId);
-	}
+    @Override
+    @Transactional
+    public boolean isValidUserID(String associateId) {
+        return useridvaldao.isValidUserID(associateId);
+    }
 
 }

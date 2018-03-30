@@ -23,32 +23,33 @@ import com.cerner.MachineRequisition.service.impl.EmailServiceImpl;
 //Request Page Controller Class
 @Controller
 public class RequestPagecontroller {
-	@Autowired(required = true)
-	RequestService requestservice;
-	@Autowired(required = true)
+    @Autowired(required = true)
+    RequestService requestservice;
+    @Autowired(required = true)
     EmailServiceImpl emailservice;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String displayHome(Model model) {
-		model.addAttribute("request", new RequestDetails());
-		return "index"; // redirects to the home page
-	}
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String displayHome(Model model) {
+        model.addAttribute("request", new RequestDetails());
+        return "index"; // redirects to the home page
+    }
 
-	/*
-	 * @RequestMapping("/") public void addRequestModel(Model model) {
-	 * model.addAttribute("request",new RequestDetails()); }
-	 */
-	@RequestMapping(value = "/request.save", method = RequestMethod.POST)
-	public String saveRequest(@Valid @ModelAttribute("request") RequestDetails details, BindingResult result,
-			Model model) {
-		if (result.hasErrors())
-			return "/";
-		else {
-			requestservice.addRequestDetails(details);
-			emailservice.setRequestId(details.getRequestid());
-			System.out.println(details.getRequestid());
-			emailservice.callEmailService();
-			return "redirect:/";
-		}
-	}
+    @RequestMapping(value = "/request.save", method = RequestMethod.POST)
+    public String saveRequest(@Valid @ModelAttribute("request") RequestDetails details, BindingResult result,
+            Model model) {
+        if (result.hasErrors())
+            return "/";
+        else {
+            requestservice.addRequestDetails(details);
+            emailservice.setRequestId(details.getRequestid());
+            emailservice.setCredentials(details.getCredential());
+            System.out.println(details.getCredential());
+            emailservice.setStartDate(details.getStartdate());
+            emailservice.setEndDate(details.getEnddate());
+            emailservice.setRequestorId(details.getAssocid());
+            emailservice.setDivisionName(details.getDivname());
+            emailservice.callEmailService();
+            return "redirect:/";
+        }
+    }
 }

@@ -18,12 +18,12 @@ import com.cerner.MachineRequisition.service.RequestService;
 
 @Service("requestservice")
 public class RequestServiceImpl implements RequestService {
-	@Autowired
-	private RequestDao requestdao;
+    @Autowired
+    private RequestDao requestdao;
 
-	@Override
-	@Transactional
-	public boolean addRequestDetails(RequestDetails requestdetails) {
-		return requestdao.addRequestDetails(requestdetails);
-	}
+    @Override
+    @Transactional
+    public boolean addRequestDetails(RequestDetails requestdetails) {
+        return requestdao.addRequestDetails(requestdetails);
+    }
 }

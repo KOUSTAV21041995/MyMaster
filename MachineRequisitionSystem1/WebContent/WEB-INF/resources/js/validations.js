@@ -18,7 +18,8 @@ $(document)
 					$("#right2").hide();
 					$("#server").hide();
 					$("#useriddummy").hide(); // added
-					
+					$("#hiddenId").hide();
+					$("#aid").hide();
 
 					// selecting the options IP/Server
 					$("#option").change(
@@ -332,8 +333,8 @@ function getAdminEmail() {
 			success : function(response) {
 				//alert("hello");
 				$('#aid').val(response);
-				//$("#hiddenId").hide();
-				//$("#aid").hide();
+				$("#hiddenId").hide();
+				$("#aid").hide();
 			},
 			error : function(response) {
 				alert("Cannot autopopulate Admin Email");

@@ -9,5 +9,5 @@ package com.cerner.MachineRequisition.Dao;
 import com.cerner.MachineRequisition.Model.RequestDetails;
 
 public interface RequestDao {
-	public boolean addRequestDetails(RequestDetails requestdetails);
+    public boolean addRequestDetails(RequestDetails requestdetails);
 }

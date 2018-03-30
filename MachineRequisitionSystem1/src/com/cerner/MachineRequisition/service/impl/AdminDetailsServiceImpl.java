@@ -19,7 +19,7 @@ public class AdminDetailsServiceImpl implements AdminDetailsService {
     private AdminDetailsDao admindetaildao;
 
     @Override
-    @Transactional 
+    @Transactional
     public String getAdminEmailByDiv(String credential) {
         return admindetaildao.getAdminEmailByDiv(credential);
     }
