@@ -269,6 +269,7 @@ function reset_all(){
 	$("#right1").hide();
 	$("#wrong2").hide();
 	$("#right2").hide();
+	$("#myModal").hide();
 }
 function getAdminEmail(){
 	var divName=$('#hiddenId').val();
@@ -284,6 +285,7 @@ function getAdminEmail(){
 			},
 			error:function(response){
 				alert("Cannot autopopulate Admin Email");
+				//$("#myModal").show();
 			}
 		});
 	}

@@ -1,5 +1,6 @@
 package com.cerner.MachineRequisition.Email;
 
+import java.io.File;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
@@ -16,10 +17,12 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-public class MailGenerator {
+import org.springframework.core.io.ClassPathResource;
 
-	public void send(String to, String cc, int requestId, String content) {
-		
+public class EmailGenerator {
+
+	public String send(String to, String cc, int requestId, String content) {
+
 		String from = "noreply.machinerequisition@gmail.com";
 		String password = "Admin@123456789";
 		// MailContent content = new MailContent();
@@ -40,9 +43,9 @@ public class MailGenerator {
 		try {
 			MimeMessage message = new MimeMessage(session);
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			message.addRecipient(Message.RecipientType.CC, new InternetAddress(cc));
 			message.setSubject("Machine Request Id : " + requestId);
-		
-			
+
 			MimeMultipart multipart = new MimeMultipart();
 			BodyPart messagebodypart = new MimeBodyPart();
 			messagebodypart.setContent(content, "text/html");
@@ -52,9 +55,17 @@ public class MailGenerator {
 
 			// second part (the image)
 			messagebodypart = new MimeBodyPart();
-			DataSource fds = new FileDataSource("./MachineRequisitionSystem1/WebContent/WEB-INF/resources/images/SlantWithLogo.png");
-		
-			messagebodypart.setDataHandler(new DataHandler(fds));
+			DataSource fds = new FileDataSource("SlantWithLogo.png");
+			
+			/*"C:\\Users\\kg056519\\Desktop\\SlantWithLogo.png"*/
+			//DataSource fds1 = new FileDataSource(new File("../MachineRequisitionSystem1/WebContent/WEB-INF/resources/images/SlantWithLogo.png"));
+			//DataSource fds2 = new FileDataSource(new File("../MachineRequisitionSystem1/WebContent/WEB-INF/resources/images/SlantWithLogo.png").getAbsolutePath());
+					
+					/*(DataSource) new ClassPathResource("SlantWithLogo.png");*/
+
+			 messagebodypart.setDataHandler(new DataHandler(fds));
+			//messagebodypart.setDataHandler((DataHandler) fds);
+			//messagebodypart.setFileName(fds.getName());
 			messagebodypart.setHeader("Content-ID", "<image>");
 
 			// add it
@@ -63,15 +74,15 @@ public class MailGenerator {
 			// put everything together
 			message.setContent(multipart);
 
-			System.out.println("Working Directory = " +
-                    System.getProperty("user.dir"));
+			//System.out.println("Working Directory = " + System.getProperty("user.dir"));
 			// send message
+			System.out.println("sending...");
 			Transport.send(message);
-			System.out.println("message sent successfully");
+			System.out.println("sent");
+			return "message sent successfully";
 		} catch (MessagingException e) {
-			throw new RuntimeException(e);
+			System.out.println("hi");
+			return "Unsuccessful";
 		}
-
 	}
-
 }

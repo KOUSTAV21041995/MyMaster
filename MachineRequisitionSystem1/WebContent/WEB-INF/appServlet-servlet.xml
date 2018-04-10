@@ -38,7 +38,7 @@
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/machine_requisition" />
 		<property name="user" value="root" />
-		<property name="password" value="Dunlop%95" />
+		<property name="password" value="root" />
 	</bean>
 	
 	<bean id ="sessionFactory"

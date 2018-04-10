@@ -138,16 +138,35 @@
 							<Label class="notes" >Note</Label>
 							<ul class="notepoints">
 								<li >You can request only one machine at a time</li>
-<<<<<<< HEAD
+
 								<li >Your request can be accepted or rejected based on the division and the tenure of machine requisition request</li>
-=======
+
 								<li >Your request can be accepted or rejected based on the tenure of machine requisition request</li>
->>>>>>> 9179988af344c491241fb4932a5b4552f1bab01f
+
 							</ul>
   						</td>
   					</tr>
   				</table>
   			</form>
 		</div>
+		<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>This is a small modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ <!-- Modal -->
 	</body>
 </html>

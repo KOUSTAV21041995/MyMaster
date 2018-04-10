@@ -12,4 +12,15 @@ public class RequestPagecontroller {
 	public String displayHome() {
 		return "index";        //redirects to the home page
 	}
+	
+	@RequestMapping(value="/Confirmation",method = RequestMethod.GET)
+	public String displayConfirmationPage() {
+		return "Confirmation";        //redirects to the Confirmation page
+	}
+	@RequestMapping(value="/backToRequest",method = RequestMethod.GET)
+	public String backToRequest() {
+		return "index";        //redirects to the Confirmation page
+	}
 }
+
+
