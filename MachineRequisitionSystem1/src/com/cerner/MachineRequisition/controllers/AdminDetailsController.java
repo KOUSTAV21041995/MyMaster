@@ -18,17 +18,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+<<<<<<< HEAD
 import com.cerner.MachineRequisition.Email.MailCredential;
 import com.cerner.MachineRequisition.Email.EmailGenerator;
+=======
+>>>>>>> ef7139c9266eb040f84a785a38c478798cdfa731
 import com.cerner.MachineRequisition.service.AdminDetailsService;
+import com.cerner.MachineRequisition.service.impl.EmailServiceImpl;
 
 @Controller
 public class AdminDetailsController {
     @Autowired(required = true)
     AdminDetailsService admindetailservice;
-    
-    MailCredential mc;
-    
+    @Autowired(required = true)
+    EmailServiceImpl emailservice;
+
     public AdminDetailsController() {
         super();
     }
@@ -39,6 +43,7 @@ public class AdminDetailsController {
         PrintWriter out = response.getWriter();
         String credential = request.getParameter("divName");
         String adminemail = admindetailservice.getAdminEmailByDiv(credential);
+<<<<<<< HEAD
         mc=new MailCredential();
         mc.setAdminEmail(adminemail);
         out.println(adminemail);
@@ -51,5 +56,12 @@ public class AdminDetailsController {
         String adminemail="Koustav.Ghosh@cerner.com";
         sendmail.send(adminemail, "Koustav.Ghosh@cerner.com", mailcredential.requestId, mailcredential.getContent());
         return "redirect:/Confirmation";
+=======
+        emailservice.setAdminemail(adminemail);
+        // emailservice.adminemail(adminemail);
+        /*
+         * System.out.println(adminemail); emailservice.setAdminemail(adminemail);
+         */ out.println(adminemail);
+>>>>>>> ef7139c9266eb040f84a785a38c478798cdfa731
     }
 }

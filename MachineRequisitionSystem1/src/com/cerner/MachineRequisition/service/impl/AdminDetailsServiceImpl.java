@@ -23,5 +23,4 @@ public class AdminDetailsServiceImpl implements AdminDetailsService {
     public String getAdminEmailByDiv(String credential) {
         return admindetaildao.getAdminEmailByDiv(credential);
     }
-
 }

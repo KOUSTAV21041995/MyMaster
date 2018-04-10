@@ -1,3 +1,9 @@
+/**
+ * This is the User ID Validation Controller test class
+ * 
+ * @author Rahul Ghata
+ */
+
 package javaTest;
 
 import java.io.PrintWriter;
@@ -22,35 +28,48 @@ import com.cerner.MachineRequisition.service.impl.AssociateDetailsServiceImpl;
 import junit.framework.TestCase;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UserIDValidationControllerTest extends TestCase{
-    @Mock 
-    AssociateDetailsServiceImpl ServiceImpl;
-    @InjectMocks
-    private UserIDValidationController controller;
-    @Mock
-    HttpServletRequest request;
-    @Mock
-    HttpServletResponse response;
-    @Before
-    public void setUp() throws Exception {
-      MockitoAnnotations.initMocks(this);
-    }
-    
-    @Test
-    public void testUserIDValidation() throws Exception {
-        AssociateDetails ad = new AssociateDetails();
-        ad.setAssociateId("KG056715");
-        Mockito.when(ServiceImpl.isValidUserID(ad.getAssociateId())).thenReturn(true);
-        ad.setAssociateId("056715");
-        Mockito.when(ServiceImpl.isValidUserID(ad.getAssociateId())).thenReturn(false);
-    }
-    
-    @Test
-    public void testServletUserId() throws Exception {      
-        Mockito.when(request.getParameter("associateId")).thenReturn("KG056715");
-        StringWriter stringwriter = new StringWriter();
-        PrintWriter printwriter = new PrintWriter(stringwriter);
-        Mockito.when(response.getWriter()).thenReturn(printwriter);
-        controller.ValidateUserId(request, response);   
-    }
+public class UserIDValidationControllerTest extends TestCase {
+	@Mock
+	AssociateDetailsServiceImpl ServiceImpl;
+	@InjectMocks
+	private UserIDValidationController controller;
+	@Mock
+	HttpServletRequest request;
+	@Mock
+	HttpServletResponse response;
+
+	@Before
+	public void setUp() throws Exception {
+		MockitoAnnotations.initMocks(this);
+	}
+
+	/**
+	 * Test userId with a mock object with associateId
+	 * 
+	 * @throws Exception
+	 * @return Nothing
+	 */
+	@Test
+	public void testUserIDValidation() throws Exception {
+		AssociateDetails ad = new AssociateDetails();
+		ad.setAssociateId("KG056715");
+		Mockito.when(ServiceImpl.isValidUserID(ad.getAssociateId())).thenReturn(true);
+		ad.setAssociateId("056715");
+		Mockito.when(ServiceImpl.isValidUserID(ad.getAssociateId())).thenReturn(false);
+	}
+
+	/**
+	 * The function tests the HTTP request and response
+	 * 
+	 * @throws Exception
+	 * @return Nothing
+	 */
+	@Test
+	public void testServletUserId() throws Exception {
+		Mockito.when(request.getParameter("associateId")).thenReturn("KG056715");
+		StringWriter stringwriter = new StringWriter();
+		PrintWriter printwriter = new PrintWriter(stringwriter);
+		Mockito.when(response.getWriter()).thenReturn(printwriter);
+		controller.validateUserId(request, response);
+	}
 }

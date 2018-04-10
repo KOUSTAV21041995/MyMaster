@@ -14,15 +14,18 @@ import org.springframework.stereotype.Repository;
 
 import com.cerner.MachineRequisition.Dao.AdminDetailsDao;
 import com.cerner.MachineRequisition.Model.AdminDetails;
+import com.cerner.MachineRequisition.service.impl.EmailServiceImpl;
 
 @Repository
 public class AdminDetailsDaoImpl implements AdminDetailsDao {
     @Autowired
     private SessionFactory sessionfactory;
+    @Autowired(required = true)
+    EmailServiceImpl emailservice;
 
     @Override
     public String getAdminEmailByDiv(String credential) {
-        String adminEmail = "";
+        String adminEmail = "", adminName = "";
         try {
             Session currentsession = sessionfactory.getCurrentSession();
             String adminDetails = "From AdminDetails where divName=" + "'" + credential + "'";
@@ -30,9 +33,10 @@ public class AdminDetailsDaoImpl implements AdminDetailsDao {
             AdminDetails ad = (AdminDetails) query.getSingleResult();
             // fetch the corresponding admin email
             adminEmail = ad.getAdminEmail();
+            emailservice.setAdminName(ad.getAdminName());
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
         return adminEmail;
     }
 }
